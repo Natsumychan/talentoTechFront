@@ -128,10 +128,3 @@ export class EnergyProducedComponent implements OnInit {
   }
 
 }
-
-      // "countryId": 5,
-      // "energyId": 2,
-      // "energyProduced": {
-      //   "quantity_produced": 2000.54321,
-      //   "production_date": "2000"
-      // }

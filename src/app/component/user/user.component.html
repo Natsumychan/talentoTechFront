@@ -1,0 +1,77 @@
+<div class="formContainer col-10 mx-auto my-5">
+    <form [formGroup]="userForm">
+      <!-- <div class="form-group">
+        <label for="role">Rol</label>
+        <select id="role" class="form-control" formControlName="role">
+          <option [value]="0">Administrador</option>
+          <option [value]="1">Usuario</option>
+          <option [value]="2">Invitado</option>
+        </select>
+      </div> -->
+
+      <div class="form-group">
+        <label for="role">Rol</label>
+        <input id="role" value='Invitado' readonly class="form-control" formControlName="role">
+
+      </div>
+
+      <div formGroupName="users">
+        <div class="form-group">
+          <label for="documentId">Documento</label>
+          <input id="documentId" class="form-control" formControlName="documentId">
+          <div *ngIf="userForm.get('users.documentId')?.invalid && userForm.get('users.documentId')?.touched">
+            <small *ngIf="userForm.get('users.documentId')?.errors?.['required']">Documento es requerido</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" class="form-control" formControlName="userName">
+          <div *ngIf="userForm.get('users.userName')?.invalid && userForm.get('users.userName')?.touched">
+            <small *ngIf="userForm.get('users.userName')?.errors?.['required']">Nombre es requerido</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input id="apellido" class="form-control" formControlName="userLastName">
+          <div *ngIf="userForm.get('users.userLastName')?.invalid && userForm.get('users.userLastName')?.touched">
+            <small *ngIf="userForm.get('users.userLastName')?.errors?.['required']">Apellido es requerido</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" class="form-control" formControlName="email">
+          <div *ngIf="userForm.get('users.email')?.invalid && userForm.get('users.email')?.touched">
+            <small *ngIf="userForm.get('users.email')?.errors?.['required']">Email es requerido</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input id="password" class="form-control" formControlName="password">
+          <div *ngIf="userForm.get('users.password')?.invalid && userForm.get('users.password')?.touched">
+            <small *ngIf="userForm.get('users.password')?.errors?.['required']">Constraseña es requerido</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="createAcounteDate">Fecha de creación</label>
+          <input id="createAcounteDate" readonly class="form-control" formControlName="createAcounteDate">
+          <div *ngIf="userForm.get('users.createAcounteDate')?.invalid && userForm.get('users.createAcounteDate')?.touched">
+            <small *ngIf="userForm.get('users.createAcounteDate')?.errors?.['required']">Fecha es requerida</small>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        [class.disabled]="userForm.invalid"
+        [disabled]="userForm.invalid"
+        (click)="onSubmit()"
+      >
+        {{id ? 'Actualizar' : 'Crear'}}
+      </button>
+      <p class="registration-msg">
+        ¿Ya estás registrado?
+        <a routerLink="/">Ingresa aquí</a> para iniciar sesión.
+      </p>
+    </form>
+  </div>

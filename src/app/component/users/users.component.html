@@ -1,0 +1,29 @@
+<div class="col-10 mx-auto my-5">
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Contraseña</th>
+                <th>Rol</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of usuario; track $index) {
+                <tr [routerLink]="['/usuario', item.documentId]">
+                    <td>{{item.documentId}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.userLastName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.password}}</td>
+                    <td>{{item.roleId.roleName}}</td>
+                    <td>{{item.createAcounteDate}}</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

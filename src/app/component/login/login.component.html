@@ -1,0 +1,15 @@
+<form class="formContainer" (submit)="login()">
+  <h2>INICIO DE SESIÓN</h2>
+  <input type="text" [(ngModel)]="documentId" placeholder="Documento de indentidad" name="documentId" required />
+  <input type="password" [(ngModel)]="password" placeholder="Contraseña" name="password" required />
+
+  <button class="btn" type="submit">Ingresar</button>
+
+  <p class="msg" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <p class="registration-msg">
+    ¿No estás registrado?
+    <a routerLink="/registro">Ingresa aquí</a> para crear una cuenta.
+  </p>
+
+</form>
