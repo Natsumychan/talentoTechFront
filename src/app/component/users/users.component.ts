@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Usuarios } from '../../class/users';
+import { Users } from '../../class/users';
 import { RouterLink } from '@angular/router';
 import { UsuariosService } from '../../service/users.service';
 
@@ -11,7 +11,7 @@ import { UsuariosService } from '../../service/users.service';
   styleUrl: './users.component.css'
 })
 export class UsersComponent {
-    usuario : Usuarios[] = []
+    usuario : Users[] = []
 
   constructor (private userService:UsuariosService) {}
 

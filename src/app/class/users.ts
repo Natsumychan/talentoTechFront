@@ -4,7 +4,7 @@ export class UserRole {
         public roleName : string
     ) {}
 }
-export class Usuarios {
+export class Users {
     constructor (
         public documentId : string,
         public userName : string,

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Usuarios } from '../class/users';
+import { Users } from '../class/users';
 
 @Injectable({
   providedIn: 'root'
@@ -15,26 +15,26 @@ export class UsuariosService {
 
   constructor(private http:HttpClient) { };
 
-  getUserList():Observable<Usuarios[]> {
-    return this.http.get<Usuarios[]>(this.url);
+  getUserList():Observable<Users[]> {
+    return this.http.get<Users[]>(this.url);
   }
 
-  getUser(id:Number):Observable<Usuarios> {
-    return this.http.get<Usuarios>(`${this.url}/${id}`);
+  getUser(id:Number):Observable<Users> {
+    return this.http.get<Users>(`${this.url}/${id}`);
   }
 
-  updateUser(id:number, data: Usuarios) : Observable<Usuarios> {
+  updateUser(id:number, data: Users) : Observable<Users> {
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-    return this.http.put<Usuarios>(`${this.url}/${id}`, data, {headers});
+    return this.http.put<Users>(`${this.url}/${id}`, data, {headers});
   }
 
-  createUser (data:Usuarios): Observable<Usuarios> {
+  createUser (data:any): Observable<Users> {
     const headers = new HttpHeaders ({
       'Content-type' : 'application/json'
     });
-    return this.http.post<Usuarios>(this.url, data, {headers});
+    return this.http.post<Users>(this.url, data, {headers});
   }
 
   login(documentId: string, password: string): Observable<{ token: string }> {

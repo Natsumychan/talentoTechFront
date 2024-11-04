@@ -20,8 +20,8 @@ export class UserComponent implements OnInit {
 
   private roleMapping: Record<string, number> = {
     'Administrador': 0,
-    'Usuario': 1,
-    'Invitado': 2
+    'Invitado': 1,
+    'Usuario': 2
   };
 
   private defaultRole: number = this.roleMapping['Usuario'];
@@ -57,20 +57,20 @@ export class UserComponent implements OnInit {
 
   getUser() {
 
-    this.userServicio.getUser(Number(this.id)).subscribe (
-      (      response: { roleId: { roleName: any; }; }) => {
+    this.userServicio.getUser(Number(this.id)).subscribe ({
+      next: (response) => {
         const userData = {
-          role : response.roleId.roleName,
+          role : "Invitado",
           users : response
         }
         console.log('Get request successfull', userData);
         this.userForm.patchValue(userData);
         this.userForm.get('role')?.enable();
       },
-      (      error: any) => {
+      error: (error) => {
         console.error('There was error with the GET request', error);
       }
-    )
+    })
   }
 
   updateUser() {
@@ -88,10 +88,10 @@ export class UserComponent implements OnInit {
 
     //console.log(id, body);
     this.userServicio.updateUser(id, body).subscribe(
-      (      response: any) => {
+      response=> {
         console.log('PATCH request successful', response);
       },
-      (      error: any) => {
+      error => {
         console.log('There was an error with tha PATCH request', error)
       }
     )
@@ -110,11 +110,11 @@ export class UserComponent implements OnInit {
     body.role = roleAsNumber;
 
     this.userServicio.createUser(body).subscribe (
-      (      response: any) => {
+      response => {
         console.log('POST request successful', response);
         this.router.navigate(['/'])
       },
-      (      error: any) => {
+      error => {
         console.error('There was an error with the POST request', error);
       }
     )
