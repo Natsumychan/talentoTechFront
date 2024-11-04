@@ -1,0 +1,26 @@
+<p>energies works!</p>
+<div class="col-10 mx-auto my-5">
+ <table class="table table-success table-striped">
+   <tr>
+  <th>ID</th>
+  <th>Tipo de energía</th>
+ </tr>
+ <tbody>
+  @for (item of energy; track $index) {
+   <tr>
+    <td>
+     <a [routerLink]="['/energy', item.type_energy_id]">
+      {{item.type_energy_id}}
+     </a>
+    </td>
+    <td>{{item.energy_name}}</td>
+    <td>
+     <!-- <button class="btn btn-danger" (click)="deleteCountry(item.country_id)">
+       Borrar
+     </button> -->
+    </td>
+   </tr>
+  }
+  </tbody>
+ </table>
+</div>
