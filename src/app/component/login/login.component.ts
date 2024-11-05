@@ -30,7 +30,7 @@ export class LoginComponent {
       next: (response) => {
         localStorage.setItem('token', response.token);
         this.authService.handleLoginSuccess(response.token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       },
       error: (error) => {
         this.errorMessage = 'Usuario o contraseña incorrecta. Intente de nuevo.';

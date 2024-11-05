@@ -1,9 +1,17 @@
-section{
+section {
   margin-bottom: 30px;
 }
 
-canvas {
+h2 {
+  text-align: center;
+}
+
+.canvas-container {
   margin-top: 20px;
   padding: 20px 40px;
   background-color: whitesmoke;
+}
+
+.subtitles {
+  color: black;
 }
