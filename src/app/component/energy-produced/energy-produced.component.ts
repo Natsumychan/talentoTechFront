@@ -94,7 +94,7 @@ export class EnergyProducedComponent implements OnInit {
     this.energyProduceService.updateEnergyProduced(id, body).subscribe({
       next: (response) => {
         console.log('PATCH request successful!', response);
-        this.toastr.success('Registro exitoso', 'Éxito')
+        this.toastr.success('Actualización exitosa', 'Éxito')
         this.toastShow();
         this.handleToastVisibility();
         setTimeout(() => {
@@ -158,8 +158,4 @@ export class EnergyProducedComponent implements OnInit {
         toastrContainer.style.boxShadow = 'none';
       }, 1200);
   }
-
-  onRedirectClick() {
-  console.log('Redirecting to /energiesProduced');
-}
 }

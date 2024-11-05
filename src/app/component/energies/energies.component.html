@@ -1,10 +1,15 @@
 <div class="col-10 mx-auto my-5">
+  <div class="button-container">
+    <button class="btn-register">
+      <a routerLink="/energy">Registrar energía</a>
+    </button>
+  </div>
   <table class="table table-light table-striped">
     <thead>
       <tr>
         <th>ID</th>
         <th>Tipo de energía</th>
-        <th></th>
+        <th>Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +22,12 @@
         </td>
         <td>{{ item.energy_name }}</td>
         <td>
-          <!-- <button class="btn btn-danger" (click)="deleteCountry(item.country_id)">
-       Borrar
-     </button> -->
+          <button
+            class="btn btn-danger"
+            (click)="deleteEnergy(item.type_energy_id)"
+          >
+            Borrar
+          </button>
         </td>
       </tr>
       }

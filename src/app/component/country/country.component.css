@@ -1,0 +1,83 @@
+.redirect {
+  margin: 20px 50px;
+}
+.redirect a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.redirect img {
+  width: 50px;
+  height: 60px;
+}
+
+.redirect p {
+  margin: 0;
+}
+
+.formContainer {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border: 1px solid #105013;
+}
+
+h2 {
+  text-align: center;
+  font-size: 23px;
+  font-weight: bold;
+  color: #5e5e5e;
+  margin: 15px auto;
+  font-family: "Arial", sans-serif;
+}
+
+input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  margin: 10px auto;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #0393d6;
+  border: none;
+  cursor: pointer;
+  margin: 7px auto;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.msg {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.registration-msg {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  text-decoration: solid;
+}

@@ -1,1 +1,51 @@
-<p>energy works!</p>
+<div class="formContainer col-10 mx-auto my-5">
+  <form [formGroup]="energyForm">
+   <h2>{{ energyId ? "Actualizar dato" : "Registrar dato" }}</h2>
+    <div class="form-group" *ngIf="energyId">
+      <label for="energy_id">Energía ID:</label>
+      <input
+        id="energy_id"
+        class="form-control"
+        formControlName="type_energy_id"
+      />
+      <div
+        *ngIf="
+          energyForm.get('energy_id')?.invalid &&
+          energyForm.get('energy_id')?.touched
+        "
+      >
+        <small *ngIf="energyForm.get('country_id')?.errors?.['required']"
+          >ID de la energía es requerida.</small
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="energy_name">Energía:</label>
+      <input
+        id="energy_name"
+        class="form-control"
+        formControlName="energy_name"
+      />
+      <div
+        *ngIf="
+          energyForm.get('energy_name')?.invalid &&
+          energyForm.get('energy_name')?.touched
+        "
+      >
+        <small *ngIf="energyForm.get('energy_name')?.errors?.['required']"
+          >El tipo de la energía es requerido.</small
+        >
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      [class.disabled]="energyForm.invalid"
+      [disabled]="energyForm.invalid"
+      (click)="onSubmit()"
+    >
+      {{ energyId ? "Actualizar" : "Crear" }}
+    </button>
+  </form>
+</div>

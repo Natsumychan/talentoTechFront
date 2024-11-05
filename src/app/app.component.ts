@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { UsuariosService } from './service/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit  {
 
     constructor (
     private authService: UsuariosService,
+    private toastr: ToastrService,
     private router : Router
   ) {}
 
@@ -28,6 +30,27 @@ export class AppComponent implements OnInit  {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.toastr.success('Finalizó la sesión', 'Adiós')
+        this.toastShow();
+        this.handleToastVisibility();
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1400);
+  }
+
+   toastShow(){
+    const toastrContainer = document.querySelector('.toast-top-right') as HTMLElement;
+    setTimeout(() =>{
+      toastrContainer.style.backgroundColor = 'white';
+      toastrContainer.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.15)';
+    }, 0)
+  }
+
+  handleToastVisibility() {
+    const toastrContainer = document.querySelector('.toast-top-right') as HTMLElement;
+      setTimeout(() => {
+        toastrContainer.style.backgroundColor = 'transparent';
+        toastrContainer.style.boxShadow = 'none';
+      }, 1200); // Ajusta el tiempo si es necesario
   }
 }

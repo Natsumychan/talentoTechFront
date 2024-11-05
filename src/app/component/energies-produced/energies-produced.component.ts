@@ -26,8 +26,7 @@ export class EnergiesProducedComponent implements OnInit, AfterViewInit  {
   energyProduced: EnergyProduced[]=[]
   energyProductionData: EnergyProductionData[] = []
 
-  energyTypes=["Hydro", "Solar", "Biomass"]
-
+  energyTypes=["Hídrica", "Solar", "Biomasa", "Eólica"]
 
   constructor(private energyProducedService:EnergyProducedService){}
   ngOnInit(): void {
@@ -58,12 +57,27 @@ export class EnergiesProducedComponent implements OnInit, AfterViewInit  {
     this.energyProducedService.getEnergyProducedList().subscribe(
       data =>{
         this.energyProduced=data.sort((a, b) => a.production_date - b.production_date)
-        console.log(this.energyProduced)
       }
     )
   }
 
  createChart() {
+  const chartOptions = {
+    responsive: true,
+      scales: {
+        x: {
+        ticks: {
+          padding: 10, // Ajusta este valor para mayor separación
+        },
+        },
+        y: {
+        ticks: {
+          padding: 10, // Ajusta este valor para las etiquetas verticales
+        },
+      },
+    },
+  };
+
     // Prepara los datos de los ejes
     const labels = Array.from(new Set(this.energyProductionData.map(item => item.year))); // Años únicos para el eje X
     const countries = Array.from(new Set(this.energyProductionData.map(item => item.countryName))); // Nombres de los países
@@ -83,24 +97,31 @@ export class EnergiesProducedComponent implements OnInit, AfterViewInit  {
 
 
 
-    // Configura y crea la gráfica
+    // Configure and create the graphic
     this.chart = new Chart(this.myChart.nativeElement, {
-      type: 'bar', // Cambia a 'line' si prefieres una gráfica de líneas
+      type: 'bar', // use bar or line depend in the case
       data: {
-        labels, // Eje X (Años)
-        datasets // Datos por país
+        labels, // Eje X (years)
+        datasets // Data by country
       },
       options: {
         responsive: true,
         scales: {
           y: {
             beginAtZero: true,
+            ticks: {
+              padding: 10, 
+            },
             title: {
               display: true,
               text: 'Energía Producida (TWh)' // Título del eje Y
             }
           },
           x: {
+            ticks: {
+              padding: 10,
+              align: 'center',
+            },
             title: {
               display: true,
               text: 'Años' // Título del eje X
@@ -114,14 +135,14 @@ export class EnergiesProducedComponent implements OnInit, AfterViewInit  {
   updateChartData() {
   if (!this.chart) return;
 
-  // Obtener etiquetas y datos actualizados
+  // obtain data and tags updated
   const labels = Array.from(new Set(this.energyProductionData.map(item => item.year)));
   const countries = Array.from(new Set(this.energyProductionData.map(item => item.countryName)));
 
-  // Actualizar etiquetas del eje X (años)
+  // Update tags of eje X (years)
   this.chart.data.labels = labels;
 
-  // Actualizar datasets para cada país
+  // Update datasets for each country
   const updatedDatasets = countries.map(country => {
     return {
       label: `Producción de Energía en ${country}`,
@@ -135,14 +156,14 @@ export class EnergiesProducedComponent implements OnInit, AfterViewInit  {
     };
   });
 
-  // Asignar los datasets actualizados a la gráfica
+  // Asign updated datasets to the graphic
   this.chart.data.datasets = updatedDatasets;
 
-  // Actualizar la gráfica para reflejar los cambios
+  // Update graphic
   this.chart.update();
 }
 
-  // Función para generar un color aleatorio para cada dataset
+  // Set random color to each dataset
   getRandomColor() {
     const r = Math.floor(Math.random() * 255);
     const g = Math.floor(Math.random() * 255);
@@ -155,6 +176,7 @@ export class EnergiesProducedComponent implements OnInit, AfterViewInit  {
       data=>{
         console.log(data)
         this.energyList()
+
       }
     )
   }

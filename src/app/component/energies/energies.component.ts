@@ -23,7 +23,16 @@ export class EnergiesComponent implements OnInit {
     this.energyService.getEnergyList().subscribe(
       data=>{
         this.energy=data
-        console.log(this.energy)
+      }
+    )
+  }
+
+  deleteEnergy(id:number){
+    const energyId = Number(id);
+    this.energyService.deleteEnergy(energyId).subscribe(
+      data => {
+        console.log(data)
+        this.energyList()
       }
     )
   }

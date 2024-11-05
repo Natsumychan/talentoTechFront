@@ -17,6 +17,7 @@ export const routes: Routes = [
  {path:"countries", component:CountriesComponent},
  {path:"energies", component:EnergiesComponent},
  {path:"energy", component:EnergyComponent},
+ {path:"energy/:energyId", component:EnergyComponent},
  {path:"energiesProduced", component:EnergiesProducedComponent},
  {path:"energyProduced", component:EnergyProducedComponent},
  {path:"energyProduced/:energyPId", component:EnergyProducedComponent},
