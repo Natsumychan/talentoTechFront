@@ -2,14 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EnergyProducedService } from '../../service/energy-produced.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CountryService } from '../../service/country.service';
 import { EnergyService } from '../../service/energy.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-energy-produced',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './energy-produced.component.html',
   styleUrl: './energy-produced.component.css'
 })
@@ -26,7 +27,9 @@ export class EnergyProducedComponent implements OnInit {
     private energyProduceService: EnergyProducedService,
     private countryService: CountryService,
     private energyService: EnergyService,
+    private toastr: ToastrService,
     private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder
   ){
     this.energyPForm = this.formBuilder.group({
@@ -91,9 +94,18 @@ export class EnergyProducedComponent implements OnInit {
     this.energyProduceService.updateEnergyProduced(id, body).subscribe({
       next: (response) => {
         console.log('PATCH request successful!', response);
+        this.toastr.success('Registro exitoso', 'Éxito')
+        this.toastShow();
+        this.handleToastVisibility();
+        setTimeout(() => {
+          this.router.navigate(['/energiesProduced']);
+        }, 1400);
       },
       error: (error) => {
         console.error('There was an error with the PATCH request!', error);
+        this.toastr.error('Hubo un error en el registro', 'Error');
+        this.toastShow();
+        this.handleToastVisibility();
       }
     });
   }
@@ -110,14 +122,18 @@ export class EnergyProducedComponent implements OnInit {
     this.energyProduceService.createEnergyProduced(body).subscribe({
       next: (response) => {
         console.log('POST request successful!', response);
+        this.toastr.success('Registro exitoso', 'Éxito')
+        this.toastShow();
+        this.handleToastVisibility();
       },
       error: (error) => {
         console.error('There was an error with the POST request!', error);
+        this.toastr.error('Hubo un error en el registro', 'Error');
+        this.toastShow();
+        this.handleToastVisibility();
       }
     })
   }
-
-
 
   onSubmit() {
     if(this.energyPId){
@@ -127,4 +143,23 @@ export class EnergyProducedComponent implements OnInit {
     }
   }
 
+   toastShow(){
+    const toastrContainer = document.querySelector('.toast-top-right') as HTMLElement;
+    setTimeout(() =>{
+      toastrContainer.style.backgroundColor = 'white';
+      toastrContainer.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.15)';
+    }, 0)
+  }
+
+  handleToastVisibility() {
+    const toastrContainer = document.querySelector('.toast-top-right') as HTMLElement;
+      setTimeout(() => {
+        toastrContainer.style.backgroundColor = 'transparent';
+        toastrContainer.style.boxShadow = 'none';
+      }, 1200);
+  }
+
+  onRedirectClick() {
+  console.log('Redirecting to /energiesProduced');
+}
 }

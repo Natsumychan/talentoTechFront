@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from '../../service/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user',
@@ -28,6 +29,7 @@ export class UserComponent implements OnInit {
 
   constructor (
     private userServicio : UsuariosService,
+    private toastr: ToastrService,
     private route : ActivatedRoute,
     private formBuilder : FormBuilder,
     private router : Router
@@ -87,14 +89,23 @@ export class UserComponent implements OnInit {
     body.role = roleAsNumber;
 
     //console.log(id, body);
-    this.userServicio.updateUser(id, body).subscribe(
-      response=> {
+    this.userServicio.updateUser(id, body).subscribe({
+      next: (response)=> {
         console.log('PATCH request successful', response);
+        this.toastr.success('Registro exitoso', 'Éxito')
+        this.toastShow();
+        this.handleToastVisibility();
+        setTimeout(() => {
+          this.router.navigate(['/usuarios']);
+        }, 1400);
       },
-      error => {
+      error: (error) => {
         console.log('There was an error with tha PATCH request', error)
+        this.toastr.error('Hubo un error en el registro', 'Error');
+        this.toastShow();
+        this.handleToastVisibility();
       }
-    )
+    })
   }
 
   createUser() {
@@ -109,15 +120,23 @@ export class UserComponent implements OnInit {
 
     body.role = roleAsNumber;
 
-    this.userServicio.createUser(body).subscribe (
-      response => {
+    this.userServicio.createUser(body).subscribe ({
+      next: (response) => {
         console.log('POST request successful', response);
-        this.router.navigate(['/'])
+        this.toastr.success('Registro exitoso', 'Éxito')
+        this.toastShow();
+        this.handleToastVisibility();
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1400);
       },
-      error => {
+      error: (error) => {
         console.error('There was an error with the POST request', error);
+        this.toastr.error('Hubo un error en el registro', 'Error');
+        this.toastShow();
+        this.handleToastVisibility();
       }
-    )
+    })
   }
 
   onSubmit() {
@@ -127,4 +146,21 @@ export class UserComponent implements OnInit {
       this.createUser();
     }
   }
+
+  toastShow(){
+    const toastrContainer = document.querySelector('.toast-top-right') as HTMLElement;
+    setTimeout(() =>{
+      toastrContainer.style.backgroundColor = 'white';
+      toastrContainer.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.15)';
+    }, 0)
+  }
+
+  handleToastVisibility() {
+    const toastrContainer = document.querySelector('.toast-top-right') as HTMLElement;
+      setTimeout(() => {
+        toastrContainer.style.backgroundColor = 'transparent';
+        toastrContainer.style.boxShadow = 'none';
+      }, 1200); // Ajusta el tiempo si es necesario
+  }
+
 }

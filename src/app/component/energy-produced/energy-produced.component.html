@@ -1,69 +1,84 @@
-<div class="formContainer col-10 mx-auto my-5">
-  <form [formGroup]="energyPForm">
-    <div class="form-group" *ngIf="energyPId">
-      <label for="production_id">Energía producida ID:</label>
-      <input
-        id="production_id"
-        class="form-control"
-        formControlName="production_id"
-      />
-      <div
-        *ngIf="
-          energyPForm.get('production_id')?.invalid &&
-          energyPForm.get('production_id')?.touched
-        "
-      >
-        <small *ngIf="energyPForm.get('country_id')?.errors?.['required']"
-          >ID de la energía a registrar es requerida.</small
+<section>
+  <div class="redirect">
+    <a routerLink="/energiesProduced">
+      <img src="../../../assets/arrow.png" alt="flecha" />
+      <p>Volver</p>
+    </a>
+  </div>
+  <div class="formContainer col-10 mx-auto my-5">
+    <h2>{{ energyPId ? "Actualizar dato" : "Registrar dato" }}</h2>
+    <form [formGroup]="energyPForm">
+      <div class="form-group" *ngIf="energyPId">
+        <label for="production_id">Energía producida ID:</label>
+        <input
+          id="production_id"
+          class="form-control"
+          formControlName="production_id"
+        />
+        <div
+          *ngIf="
+            energyPForm.get('production_id')?.invalid &&
+            energyPForm.get('production_id')?.touched
+          "
         >
+          <small *ngIf="energyPForm.get('country_id')?.errors?.['required']"
+            >ID de la energía a registrar es requerida.</small
+          >
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="countryId">País:</label>
-      <select formControlName="countryId" id="countryId" class="form-control">
-        <option *ngFor="let country of countries" [value]="country.country_id">
-          {{ country.country_name }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="energyId">Tipo de Energía:</label>
-      <select formControlName="energyId" id="energyId" class="form-control">
-        <option *ngFor="let energy of energies" [value]="energy.type_energy_id">
-          {{ energy.energy_name }}
-        </option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="countryId">País:</label>
+        <select formControlName="countryId" id="countryId" class="form-control">
+          <option
+            *ngFor="let country of countries"
+            [value]="country.country_id"
+          >
+            {{ country.country_name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="energyId">Tipo de Energía:</label>
+        <select formControlName="energyId" id="energyId" class="form-control">
+          <option
+            *ngFor="let energy of energies"
+            [value]="energy.type_energy_id"
+          >
+            {{ energy.energy_name }}
+          </option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label for="quantity_produced">Cantidad Producida:</label>
-      <input
-        type="number"
-        formControlName="quantity_produced"
-        id="quantity_produced"
-        class="form-control"
-      />
-    </div>
+      <div class="form-group">
+        <label for="quantity_produced">Cantidad Producida:</label>
+        <input
+          type="number"
+          formControlName="quantity_produced"
+          id="quantity_produced"
+          class="form-control"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="production_date">Fecha de Producción:</label>
-      <input
-        type="number"
-        formControlName="production_date"
-        id="production_date"
-        placeholder="Año"
-        class="form-control"
-      />
-    </div>
+      <div class="form-group">
+        <label for="production_date">Fecha de Producción:</label>
+        <input
+          type="number"
+          formControlName="production_date"
+          id="production_date"
+          placeholder="Año"
+          class="form-control"
+        />
+      </div>
 
-    <button
-      type="button"
-      class="btn btn-outline-primary"
-      [class.disabled]="energyPForm.invalid"
-      [disabled]="energyPForm.invalid"
-      (click)="onSubmit()"
-    >
-      {{ energyPId ? "Actualizar" : "Crear" }}
-    </button>
-  </form>
-</div>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        [class.disabled]="energyPForm.invalid"
+        [disabled]="energyPForm.invalid"
+        (click)="onSubmit()"
+      >
+        {{ energyPId ? "Actualizar" : "Crear" }}
+      </button>
+    </form>
+  </div>
+</section>

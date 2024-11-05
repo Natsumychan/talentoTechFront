@@ -1,52 +1,57 @@
-<section>
+<section class="d-flex flex-column justify-content-center">
   <div class="canvas-container d-block mx-auto w-100" style="max-width: 700px">
     <h2>Total de Energía Producida por País Cada Año</h2>
     <canvas #myChart></canvas>
   </div>
-<div class="col-10 mx-auto my-5">
-  <h2 class="subtitles">Registro de energías producidas</h2>
-  <table class="table table-light table-striped">
-    <thead>
-      <tr  class="table-light">
-      <th class="table-light">ID</th>
-      <th>País</th>
-      <th>Continente</th>
-      <th>Tipo de energía</th>
-      <th>Cantidad de energía</th>
-      <th>Año</th>
-      <th>Acción</th>
-    </tr>
-    </thead>
-    <tbody>
-      @for (item of energyProduced; track $index) {
-      <tr>
-        <td>
-          <a [routerLink]="['/energyProduced', item.production_id]">
-            {{ item.production_id }}
-          </a>
-        </td>
-        <td>{{ item.country.country_name }}</td>
-        <td>{{ item.country.continent_name }}</td>
-        <td>{{ item.energy.energy_name }}</td>
-        <td>{{ item.quantity_produced }}</td>
-        <td>{{ item.production_date }}</td>
-        <td>
-          <button
-            class="btn btn-danger"
-            (click)="deleteEnergyProduced(item.production_id)"
-          >
-            Borrar
-          </button>
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table>
-</div>
+  <div class="button-container">
+    <button class="btn-register">
+      <a routerLink="/energyProduced/">Registrar datos</a>
+    </button>
+  </div>
+  <div class="col-10 mx-auto my-5">
+    <h2 class="subtitles">Registro de energías producidas</h2>
+    <table class="table table-light table-striped">
+      <thead>
+        <tr class="table-light">
+          <th class="table-light">ID</th>
+          <th>País</th>
+          <th>Continente</th>
+          <th>Tipo de energía</th>
+          <th>Cantidad de energía</th>
+          <th>Año</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of energyProduced; track $index) {
+        <tr>
+          <td>
+            <a [routerLink]="['/energyProduced', item.production_id]">
+              {{ item.production_id }}
+            </a>
+          </td>
+          <td>{{ item.country.country_name }}</td>
+          <td>{{ item.country.continent_name }}</td>
+          <td>{{ item.energy.energy_name }}</td>
+          <td>{{ item.quantity_produced }}</td>
+          <td>{{ item.production_date }}</td>
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="deleteEnergyProduced(item.production_id)"
+            >
+              Borrar
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 
-<h2>Gráfica de Producción de Energía</h2>
-<app-energy-type-chart
-  *ngFor="let energyType of energyTypes"
-  [energyType]="energyType"
-></app-energy-type-chart>
+  <h2>Gráfica de Producción de Energía</h2>
+  <app-energy-type-chart
+    *ngFor="let energyType of energyTypes"
+    [energyType]="energyType"
+  ></app-energy-type-chart>
 </section>

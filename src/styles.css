@@ -6,12 +6,29 @@ html {
 }
 
 body {
-  background: rgb(230,241,222);
-  background: linear-gradient(212deg, rgba(230,241,222,1) 0%, rgba(63,121,60,0.8631827731092436) 39%, rgba(67,136,19,0.7455357142857143) 100%);
+  background: rgb(230, 241, 222);
+  background: linear-gradient(
+    212deg,
+    rgba(230, 241, 222, 1) 0%,
+    rgba(63, 121, 60, 0.8631827731092436) 39%,
+    rgba(67, 136, 19, 0.7455357142857143) 100%
+  );
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.toast-top-right {
+  background-color: white; /* Fondo blanco */
+  border-radius: 4px; /* Bordes redondeados */
+  color: black; /* Color del texto */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra ligera */
+  padding: 1rem;
+  width: auto; /* Ajuste al ancho del contenido */
+  top: 60px; /* Ajusta según la altura del navbar */
+  right: 15px; /* Separación desde el borde derecho */
+  position: absolute; /* Posición relativa para que siga el flujo de la página */
 }

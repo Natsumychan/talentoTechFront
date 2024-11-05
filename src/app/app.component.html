@@ -1,7 +1,7 @@
 <div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/">Home</a>
+      <a class="navbar-brand" routerLink="/">Inicio</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -36,12 +36,12 @@
             >
           </li>
           <li *ngIf="isAuthenticated" class="nav-item">
-            <a class="nav-link" routerLink="/home"(click)="logout()"> Cerrar sesión </a>
+            <a class="nav-link" routerLink="/home" (click)="logout()">
+              Cerrar sesión
+            </a>
           </li>
           <li *ngIf="!isAuthenticated" class="nav-item">
-            <a class="nav-link" routerLink="/login"
-              >Inicio de sesión</a
-            >
+            <a class="nav-link" routerLink="/login">Inicio de sesión</a>
           </li>
           <li *ngIf="!isAuthenticated" class="nav-item">
             <a class="nav-link" routerLink="/registro">Registro</a>
