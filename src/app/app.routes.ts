@@ -8,6 +8,8 @@ import { EnergyProducedComponent } from './component/energy-produced/energy-prod
 import { LoginComponent } from './component/login/login.component';
 import { UserComponent } from './component/user/user.component';
 import { UsersComponent } from './component/users/users.component';
+import { Component } from '@angular/core';
+import { HomeComponent } from './component/home/home.component';
 
 export const routes: Routes = [
  {path:"country", component:CountryComponent},
@@ -21,5 +23,6 @@ export const routes: Routes = [
  {path : "usuario/:id", component : UserComponent},
  {path : "usuarios", component : UsersComponent},
  {path : 'registro', component : UserComponent},
- {path : '', component : LoginComponent}
+ {path : 'login', component : LoginComponent},
+ {path:"", component:HomeComponent}
 ];

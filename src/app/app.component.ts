@@ -11,7 +11,7 @@ import { UsuariosService } from './service/users.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit  {
-  title = 'energy';
+  title = 'DataVerde ';
 
   isAuthenticated : boolean = false;
 
@@ -24,5 +24,9 @@ export class AppComponent implements OnInit  {
     this.authService.isAuthenticated$.subscribe(isAuthenticated=> {
       this.isAuthenticated = isAuthenticated;
     });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

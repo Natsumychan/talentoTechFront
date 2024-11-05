@@ -43,7 +43,6 @@ export class UsuariosService {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
-    this.isAuthenticatedSubject.next(true);
   }
 
   logout(): void {

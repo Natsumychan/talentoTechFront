@@ -1,54 +1,54 @@
 .formContainer {
-    max-width: 400px;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-    border: 1px solid #007bff;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border: 1px solid #105013;
 }
-
 
 h2 {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
+  text-align: center;
+  font-size: 23px;
+  font-weight: bold;
+  color: #5e5e5e;
+  margin: 15px auto;
+  font-family: "Arial", sans-serif;
 }
 
-
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #0393d6;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
+.error-message,
+small {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 .registration-msg {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    text-decoration:solid;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  text-decoration: solid;
 }

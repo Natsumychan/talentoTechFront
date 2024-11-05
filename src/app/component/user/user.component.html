@@ -1,14 +1,6 @@
 <div class="formContainer col-10 mx-auto my-5">
     <form [formGroup]="userForm">
-      <!-- <div class="form-group">
-        <label for="role">Rol</label>
-        <select id="role" class="form-control" formControlName="role">
-          <option [value]="0">Administrador</option>
-          <option [value]="1">Usuario</option>
-          <option [value]="2">Invitado</option>
-        </select>
-      </div> -->
-
+      <h2>DATOS USUARIO</h2>
       <div class="form-group">
         <label for="role">Rol</label>
         <input id="role" value='Invitado' readonly class="form-control" formControlName="role">

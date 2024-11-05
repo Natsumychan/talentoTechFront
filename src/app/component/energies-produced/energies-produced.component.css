@@ -1,0 +1,9 @@
+section{
+  margin-bottom: 30px;
+}
+
+canvas {
+  margin-top: 20px;
+  padding: 20px 40px;
+  background-color: whitesmoke;
+}
