@@ -42,6 +42,7 @@ Este proyecto tiene como objetivo crear una aplicación web para el manejo de da
 1. **Clonar el Repositorio**:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/Natsumychan/talentoTechFront.git clonar el front
+   git clone https://github.com/Natsumychan/talento_tecth_energy.git clonar el back
    cd tu-repositorio
 
